@@ -1,38 +1,20 @@
 name: NASA Project CI
-on: # on property states events on which this workflow file should run
-  push: # name of the github-event which triggers this workflow
-    branches: [ master ]
+on: 
+  push:
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
-# jobs states the sequence of tasks which should be executed when any of the above event occurs
-# jobs runs the listed tasks parallaly 
-# to run the tasks in sequece use the "need" keyword to state the precedance
 jobs: 
   build: 
-    runs-on: ubuntu-latest # to be run on which machine it could be macos-latest also
-    steps: # defines steps to run when build is executed
-    # can run commands, setup tasks or run an action
-      
-      # uses - selects an action
-      # run - runs a command line command
-
-      - uses: actions/checkout@v2 # we add first step to use checkout action to check out the latest version
-      # this are just the references to the scripts which runs thus its a good idea to specify the version.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 
 
       - name: Use Node.js version 16
         uses: actions/setup-node@v2
-        with: # for specifying the parameters which setup-node action requires
-          node-version: '16' # setup node with configuration parameter node-version as 16
-      
-      # we can also run our own commands by passing -run as step
+        with: 
+          node-version: '16'
       - run: npm install
       - name: builds and run frontend
         run: npm run build --prefix client
-  deploy:
-    needs: build # run deploy after build
-
-
-# other notes
-
-# the code runs on the servers hosted by github, each job in a workflow runs in a fresh environment 
