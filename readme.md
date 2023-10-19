@@ -1,6 +1,8 @@
 - ### Project structure
 
 - root
+    - .github
+        - CI workflow 
     - client 
         - public
         - src ...  
@@ -28,5 +30,5 @@
 
 
 - #### Architecture
-    <img src="./Architecture.svg"/>
+    <img src="./assets/images/Architecture.svg"/>
 
