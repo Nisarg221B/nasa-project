@@ -8,6 +8,9 @@
 #production
 /build
 
+/nasa-aws-connect
+/deployed-at.md
+
 #misc
 .DS_Store
 .env
